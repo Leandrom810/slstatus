@@ -11,6 +11,8 @@
 #include "slstatus.h"
 #include "util.h"
 
+#include <locale.h> /* localization */
+
 struct arg {
 	const char *(*func)();
 	const char *fmt;
@@ -47,6 +49,7 @@ usage(void)
 int
 main(int argc, char *argv[])
 {
+	setlocale(LC_TIME, "pt_BR.utf8"); /* brasil carai */
 	struct sigaction act;
 	struct timespec start, current, diff, intspec, wait;
 	size_t i, len;
